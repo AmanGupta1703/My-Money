@@ -8,6 +8,9 @@ function useSignup() {
   const [isPending, setIsPending] = useState(false);
 
   async function signup(email, password, displayName) {
+    setError(null);
+    setIsPending(true);
+
     try {
       // signup the user (with email and password)
       const res = await projectAuth.createUserWithEmailAndPassword(
