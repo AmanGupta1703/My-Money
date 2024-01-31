@@ -17,3 +17,7 @@
   color: #777;
   width: 100%;
 }
+.signup-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

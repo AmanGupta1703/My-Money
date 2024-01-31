@@ -1,17 +1,21 @@
 import { useState } from 'react';
 
+// custom hook
+import { useSignup } from '../../hooks/useSignup';
+
 // styles
 import styles from './Signup.module.css';
 
 function Signup() {
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('Aman');
+  const [email, setEmail] = useState('amangupta@gmail.com');
+  const [password, setPassword] = useState('aman@123');
+
+  const { error, isPending, signup } = useSignup();
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(displayName, email, password);
+    signup(email, password, displayName);
   }
 
   return (
@@ -45,7 +49,10 @@ function Signup() {
         />
       </label>
 
-      <buttob className='btn'>Signup</buttob>
+      <button disabled={isPending} className='btn'>
+        {isPending ? 'Loading...' : 'Signup'}
+      </button>
+      {error && <p>{error}</p>}
     </form>
   );
 }
