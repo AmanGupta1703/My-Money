@@ -33,3 +33,5 @@ function useLogout() {
 
   return { error, isPending, logout };
 }
+
+export { useLogout };
